@@ -4,11 +4,60 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sign Up!</title>
   <script src="./script.js" defer></script>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  
+  <header>
+    <img src="./img/background-img.jpg" alt="Close up of wet ferns">
+      <div class="header-logo">
+        <img src="./img/odin-lined.png" alt="Company logo that depicts Odin">
+        <h1>Odin</h1>
+      </div>
+      <p><a href="https://unsplash.com/photos/25xggax4bSA">Photo by Halie West on Unsplash</a></p>
+    </img>
+  </header>
+  <main>
+    <section class="theme-default">
+      <p>This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p>
+      <p>You <em>know</em> you want to.</p>
+    </section>
+    <section class="theme-form">
+      <form action="#" method="post" id="form-sign-up">
+        <h1>Let's do this!</h1>
+        <div class="form-controls">
+          <div class="input-textual">
+            <label for="name-first">FIRST NAME</label>
+            <input type="text" name="name-first" id="name-first">
+          </div>
+          <div class="input-textual">
+            <label for="name-last">LAST NAME</label>
+            <input type="text" name="name-last" id="name-last">
+          </div>
+          <div class="input-textual">
+            <label for="email">EMAIL</label>
+            <input type="email" name="email" id="email">
+          </div>
+          <div class="input-textual">
+            <label for="phone">PHONE NUMBER</label>
+            <input type="tel" name="phone" id="phone">
+          </div>
+          <div class="input-textual">
+            <label for="pwd">PASSWORD</label>
+            <input type="password" name="pwd" id="pwd">
+          </div>
+          <div class="input-textual">
+            <label for="pwd-confirm">CONFIRM PASSWORD</label>
+            <input type="password" name="pwd-confirm" id="pwd-confirm">
+          </div>
+        </div>
+      </form>
+    </section>
+    <section class="theme-default">
+      <button type="submit" form="form-sign-up">Create Account</button>
+      <p>Already have an account? <a href="#">Log in</a></p>
+    </section>
+  </main>
 </body>
 </html>
