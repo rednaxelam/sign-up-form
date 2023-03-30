@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
+  align-items: stretch;
   width: min(1344px, 100vw);
   margin: 0 auto;
   background-color: antiquewhite;
@@ -29,6 +30,7 @@ main {
 
 header {
   flex: 1 1 300px;
+  min-height: 300px;
   background-image: url(./img/background-img.jpg);
   background-size: cover;
   position: relative;
@@ -142,4 +144,8 @@ button[type="submit"] {
 .login, .login:active, .login:visited, .login:hover {
   color: #596D48;
   text-decoration: none;
+}
+
+.account-prompt {
+  margin-bottom: 2rem;
 }
