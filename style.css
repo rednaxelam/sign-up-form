@@ -109,7 +109,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin: 2vh 2vw 0 0;
+  margin: 0 3rem 1rem 0;
 }
 
 .input-textual label {
@@ -131,6 +131,37 @@ p {
   outline: none;
   box-shadow:  2px 2px 5px #777676;
 }
+
+.input-textual input.valid {
+  border-color: green;
+}
+
+.input-textual input.invalid {
+  border-color: red;
+}
+
+.input-textual input+span {
+  position: relative;
+}
+
+.input-textual input.invalid+span::before {
+  position: absolute;
+  right: -1rem;
+  top: -1.7rem;
+  font-size: 1rem;
+  content: "✖";
+  color: red;
+}
+
+.input-textual input.valid+span::before {
+  position: absolute;
+  right: -1rem;
+  top: -1.7rem;
+  font-size: 1rem;
+  content: "✓";
+  color: green;
+}
+
 
 button[type="submit"] {
   padding: 0.8rem 3.5rem;
