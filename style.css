@@ -80,6 +80,12 @@ main {
   font-weight: bold;
 }
 
+.header-subtext {
+  color: rgb(97, 96, 96);
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
 .large-font {
   font-size: 1.3rem;
 }
