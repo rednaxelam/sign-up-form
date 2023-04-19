@@ -1,10 +1,14 @@
 addInitialListeners();
 
 function addInitialListeners() {
-  const textualInputFields = document.querySelectorAll(".input-textual>input");
+  const textualInputFields = document.querySelectorAll(".input-textual input");
   for (let i = 0; i < textualInputFields.length; i++) {
     textualInputFields.item(i).addEventListener('blur', validateOnblur);
     textualInputFields.item(i).addEventListener('focus', removeValidStyling);
+  }
+  const passwordVisibilityToggles = document.querySelectorAll(".input-pwd img")
+  for (let i = 0; i < passwordVisibilityToggles.length; i++) {
+    passwordVisibilityToggles.item(i).addEventListener('click', togglePasswordVisibility);
   }
   document.querySelector('button[type="submit"]').addEventListener("click", failedSubmitBehaviour);
 }
@@ -41,9 +45,20 @@ function removeValidStyling() {
   this.classList.remove("valid");
 }
 
+function togglePasswordVisibility() {
+ let pwdInput = this.previousElementSibling;
+ if (pwdInput.getAttribute("type") === "password") {
+  pwdInput.setAttribute("type", "text");
+  this.setAttribute("src", "./img/vis-off.svg");
+ } else {
+  pwdInput.setAttribute("type", "password");
+  this.setAttribute("src", "./img/vis-on.svg");
+ }
+}
+
 function failedSubmitBehaviour() {
   if (!document.querySelector("#form-sign-up").checkValidity()) {
-    const textualInputFields = document.querySelectorAll(".input-textual>input");
+    const textualInputFields = document.querySelectorAll(".input-textual input");
     for (let i = 0; i < textualInputFields.length; i++) {
       const textualInput = textualInputFields.item(i);
       textualInput.removeEventListener('blur', validateOnblur);

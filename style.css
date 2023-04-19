@@ -109,13 +109,14 @@ p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  column-gap: 4.5rem;
 }
 
 .input-textual {
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin: 0 3rem 1rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .input-textual label {
@@ -129,7 +130,6 @@ p {
   border: 2px solid #E5E7EB;
   border-radius: 2px;
   padding: 0.2rem 0.3rem 0.2rem 0.3rem;
-
 }
 
 .input-textual input:focus {
@@ -146,11 +146,11 @@ p {
   border-color: red;
 }
 
-.input-textual input+span {
+.input-textual input+span, .input-textual .input-pwd+span {
   position: relative;
 }
 
-.input-textual input.invalid+span::before {
+.input-textual input.invalid+span::before, .input-pwd:has(input.invalid)+span::before {
   position: absolute;
   right: -1rem;
   top: -1.7rem;
@@ -159,7 +159,7 @@ p {
   color: red;
 }
 
-.input-textual input.valid+span::before {
+.input-textual input.valid+span::before, .input-pwd:has(input.valid)+span::before {
   position: absolute;
   right: -1rem;
   top: -1.7rem;
@@ -168,6 +168,13 @@ p {
   color: green;
 }
 
+.input-pwd img{
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 0 0 0 -1.8rem;
+  vertical-align: text-top;
+  cursor: pointer;
+}
 
 button[type="submit"] {
   padding: 0.8rem 3.5rem;
