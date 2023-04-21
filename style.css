@@ -176,6 +176,30 @@ p {
   cursor: pointer;
 }
 
+.input-textual {
+  position: relative;
+}
+
+#password-requirements-container {
+  top: 4rem;
+  padding: 0.5ch 1ch;
+  width: 32ch;
+  position: absolute;
+  background-color: rgb(247, 247, 253);
+  border: 2px solid black;
+  border-radius: 5px;
+  z-index: 9999;
+  visibility: hidden;
+}
+
+#password-requirements {
+  list-style: none;  
+}
+
+#password-requirements li::before {
+  content: "• ";
+}
+
 button[type="submit"] {
   padding: 0.8rem 3.5rem;
   background-color: #596D48;

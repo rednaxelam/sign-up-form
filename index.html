@@ -52,10 +52,19 @@
             <div class="input-textual">
               <label for="pwd">PASSWORD</label>
               <div class="input-pwd">
-                <input type="password" name="pwd" id="pwd" required>
+                <input type="password" name="pwd" id="pwd" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$">
                 <img src="./img/vis-on.svg" alt="Image of an open eye. Can be interacted with to change visibility of password.">
               </div>
               <span></span>
+              <div id="password-requirements-container">
+                <em>Password must:</em>
+                <ul id="password-requirements">
+                  <li id="pr-8-to-16">Be 8 to 16 characters long</li>
+                  <li id="pr-upper">Have an uppercase latin character</li>
+                  <li id="pr-lower">Have a lowercase latin character</li>
+                  <li id="pr-number">Have a number</li>
+                </ul>
+              </div>
             </div>
             <div class="input-textual">
               <label for="pwd-confirm">CONFIRM PASSWORD</label>
