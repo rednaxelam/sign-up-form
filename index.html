@@ -25,7 +25,7 @@
     </section>
     <section class="theme-form">
       <div class="main-content-container">
-        <form action="#" method="post" id="form-sign-up" spellcheck="false">
+        <form action="#" method="post" id="form-sign-up" spellcheck="false" novalidate>
           <h1 class="bold large-font darkgray">Let's do this!</h1>
           <p class="header-subtext"><em>All fields are required.</em></p>
           <div class="form-controls">
@@ -33,21 +33,25 @@
               <label for="name-first">FIRST NAME</label>
               <input type="text" name="name-first" id="name-first" required>
               <span></span>
+              <span class="error-message">* Please enter your first name</span>
             </div>
             <div class="input-textual">
               <label for="name-last">LAST NAME</label>
               <input type="text" name="name-last" id="name-last" required>
               <span></span>
+              <span class="error-message">* Please enter your surname</span>
             </div>
             <div class="input-textual">
               <label for="email">EMAIL</label>
               <input type="email" name="email" id="email" required>
               <span></span>
+              <span class="error-message">* Please enter a valid email address</span>
             </div>
             <div class="input-textual">
               <label for="phone">PHONE NUMBER</label>
               <input type="tel" name="phone" id="phone" required>
               <span></span>
+              <span class="error-message">* Please enter your phone number</span>
             </div>
             <div class="input-textual">
               <label for="pwd">PASSWORD</label>
@@ -56,6 +60,7 @@
                 <img src="./img/vis-on.svg" alt="Image of an open eye. Can be interacted with to change visibility of password.">
               </div>
               <span></span>
+              <span class="error-message">* Please enter a valid password</span>
               <div id="password-requirements-container">
                 <em>Password must:</em>
                 <ul id="password-requirements">
@@ -73,6 +78,7 @@
                 <img src="./img/vis-on.svg" alt="Image of an open eye. Can be interacted with to change visibility of password.">
               </div>
               <span></span>
+              <span class="error-message">* Passwords do not match</span>
             </div>
           </div>
         </form>

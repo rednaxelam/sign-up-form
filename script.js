@@ -10,7 +10,7 @@ function addInitialListeners() {
   for (let i = 0; i < passwordVisibilityToggles.length; i++) {
     passwordVisibilityToggles.item(i).addEventListener('click', togglePasswordVisibility);
   }
-  document.querySelector('button[type="submit"]').addEventListener("click", failedSubmitBehaviour);
+  document.querySelector("#form-sign-up").addEventListener("submit", validateForm)
   const pwdInput = document.querySelector("#pwd");
   pwdInput.addEventListener("focus", displayPasswordRequirements);
   pwdInput.addEventListener("blur", hidePasswordRequirements);
@@ -120,17 +120,22 @@ function displaySatisfiedPasswordRequirements() {
 
 }
 
-function failedSubmitBehaviour() {
+function validateForm(e) {
   if (!document.querySelector("#form-sign-up").checkValidity()) {
-    const textualInputFields = document.querySelectorAll(".input-textual input");
-    for (let i = 0; i < textualInputFields.length; i++) {
-      const textualInput = textualInputFields.item(i);
-      textualInput.removeEventListener('blur', validateOnblur);
-      textualInput.addEventListener("input", validateOninput);
-      if (!textualInput.checkValidity()) {
-        textualInput.classList.add("invalid");
-        textualInput.classList.remove("valid");
-      }
+    e.preventDefault();
+    failedSubmitBehaviour();
+  }
+}
+
+function failedSubmitBehaviour() {
+  const textualInputFields = document.querySelectorAll(".input-textual input");
+  for (let i = 0; i < textualInputFields.length; i++) {
+    const textualInput = textualInputFields.item(i);
+    textualInput.removeEventListener('blur', validateOnblur);
+    textualInput.addEventListener("input", validateOninput);
+    if (!textualInput.checkValidity()) {
+      textualInput.classList.add("invalid");
+      textualInput.classList.remove("valid");
     }
   }
 }
