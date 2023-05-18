@@ -105,10 +105,10 @@ function togglePasswordVisibility() {
  let pwdInput = this.previousElementSibling;
  if (pwdInput.getAttribute("type") === "password") {
   pwdInput.setAttribute("type", "text");
-  this.setAttribute("src", "./img/vis-off.svg");
+  this.setAttribute("src", "./img/vis-on.svg");
  } else {
   pwdInput.setAttribute("type", "password");
-  this.setAttribute("src", "./img/vis-on.svg");
+  this.setAttribute("src", "./img/vis-off.svg");
  }
 }
 
