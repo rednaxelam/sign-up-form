@@ -29,31 +29,31 @@
           <h1 class="bold large-font darkgray">Let's do this!</h1>
           <p class="header-subtext"><em>All fields are required.</em></p>
           <div class="form-controls">
-            <div class="input-textual">
+            <div class="input-textual default-validate">
               <label for="name-first">FIRST NAME</label>
               <input type="text" name="name-first" id="name-first" required>
               <span></span>
               <span class="error-message">* Please enter your first name</span>
             </div>
-            <div class="input-textual">
+            <div class="input-textual default-validate">
               <label for="name-last">LAST NAME</label>
               <input type="text" name="name-last" id="name-last" required>
               <span></span>
               <span class="error-message">* Please enter your surname</span>
             </div>
-            <div class="input-textual">
+            <div class="input-textual default-validate">
               <label for="email">EMAIL</label>
               <input type="email" name="email" id="email" required>
               <span></span>
               <span class="error-message">* Please enter a valid email address</span>
             </div>
-            <div class="input-textual">
+            <div class="input-textual default-validate">
               <label for="phone">PHONE NUMBER</label>
               <input type="tel" name="phone" id="phone" required>
               <span></span>
               <span class="error-message">* Please enter your phone number</span>
             </div>
-            <div class="input-textual">
+            <div class="input-textual default-validate">
               <label for="pwd">PASSWORD</label>
               <div class="input-pwd">
                 <input type="password" name="pwd" id="pwd" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$">
@@ -71,7 +71,7 @@
                 </ul>
               </div>
             </div>
-            <div class="input-textual">
+            <div class="input-textual custom-validate">
               <label for="pwd-confirm">CONFIRM PASSWORD</label>
               <div class="input-pwd">
                 <input type="password" name="pwd-confirm" id="pwd-confirm" required>

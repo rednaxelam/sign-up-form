@@ -1,20 +1,24 @@
 addInitialListeners();
 
 function addInitialListeners() {
-  const textualInputFields = document.querySelectorAll(".input-textual input");
-  for (let i = 0; i < textualInputFields.length; i++) {
-    textualInputFields.item(i).addEventListener('blur', validateOnblur);
-    textualInputFields.item(i).addEventListener('focus', removeValidStyling);
+  const textualInputFieldsDefault = document.querySelectorAll(".input-textual.default-validate input");
+  for (let i = 0; i < textualInputFieldsDefault.length; i++) {
+    textualInputFieldsDefault.item(i).addEventListener('blur', validateOnblur);
+    textualInputFieldsDefault.item(i).addEventListener('focus', removeValidStyling);
   }
   const passwordVisibilityToggles = document.querySelectorAll(".input-pwd img")
   for (let i = 0; i < passwordVisibilityToggles.length; i++) {
     passwordVisibilityToggles.item(i).addEventListener('click', togglePasswordVisibility);
   }
-  document.querySelector("#form-sign-up").addEventListener("submit", validateForm)
+  document.querySelector("#form-sign-up").addEventListener("submit", validateForm);
   const pwdInput = document.querySelector("#pwd");
   pwdInput.addEventListener("focus", displayPasswordRequirements);
   pwdInput.addEventListener("blur", hidePasswordRequirements);
   pwdInput.addEventListener("input", displaySatisfiedPasswordRequirements);
+  pwdInput.addEventListener("input", validatePwdConfirmOnPwdInput);
+  const pwdConfirm = document.querySelector("#pwd-confirm");
+  pwdConfirm.addEventListener("blur", validateOnblurPwdConfirm);
+  pwdConfirm.addEventListener("focus", removeValidStyling);
 }
 
 function validateOnblur(e) {
@@ -47,6 +51,54 @@ function validateOninput() {
 
 function removeValidStyling() {
   this.classList.remove("valid");
+}
+
+function validateOnblurPwdConfirm() {
+  const pwd = document.querySelector("#pwd");
+  const pwdConfirm = this;
+  if (pwdConfirm.value.length === 0 || !pwd.checkValidity()) {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.remove("valid");
+    pwdConfirm.removeEventListener("input", validateOninputPwdConfirm);
+  } else if (pwdConfirm.value === pwd.value) {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.add("valid");
+    pwdConfirm.removeEventListener("input", validateOninputPwdConfirm);
+  } else {
+    pwdConfirm.classList.remove("valid");
+    pwdConfirm.classList.add("invalid");
+    pwdConfirm.addEventListener("input", validateOninputPwdConfirm);
+  }
+}
+
+function validateOninputPwdConfirm() {
+  const pwd = document.querySelector("#pwd");
+  const pwdConfirm = this;
+  if (pwdConfirm.value.length === 0 || !pwd.checkValidity()) {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.remove("valid");
+  } else if (pwdConfirm.value === pwd.value) {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.add("valid");
+  } else {
+    pwdConfirm.classList.remove("valid");
+    pwdConfirm.classList.add("invalid");
+  }
+}
+
+function validatePwdConfirmOnPwdInput() {
+  const pwd = this;
+  const pwdConfirm = document.querySelector("#pwd-confirm");
+  if (pwdConfirm.value.length === 0 || !pwd.checkValidity()) {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.remove("valid");
+  } else if (pwdConfirm.value === pwd.value) {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.add("valid");
+  } else {
+    pwdConfirm.classList.remove("valid");
+    pwdConfirm.classList.add("invalid");
+  }
 }
 
 function togglePasswordVisibility() {
@@ -121,21 +173,39 @@ function displaySatisfiedPasswordRequirements() {
 }
 
 function validateForm(e) {
-  if (!document.querySelector("#form-sign-up").checkValidity()) {
+  const pwd = document.querySelector("#pwd");
+  const pwdConfirm = document.querySelector("#pwd-confirm");
+  if (!document.querySelector("#form-sign-up").checkValidity() || pwd.value !== pwdConfirm.value) {
     e.preventDefault();
     failedSubmitBehaviour();
   }
 }
 
 function failedSubmitBehaviour() {
-  const textualInputFields = document.querySelectorAll(".input-textual input");
-  for (let i = 0; i < textualInputFields.length; i++) {
-    const textualInput = textualInputFields.item(i);
+  const textualInputFieldsDefault = document.querySelectorAll(".input-textual.default-validate input");
+  for (let i = 0; i < textualInputFieldsDefault.length; i++) {
+    const textualInput = textualInputFieldsDefault.item(i);
     textualInput.removeEventListener('blur', validateOnblur);
+    textualInput.removeEventListener('focus', removeValidStyling);
     textualInput.addEventListener("input", validateOninput);
     if (!textualInput.checkValidity()) {
       textualInput.classList.add("invalid");
       textualInput.classList.remove("valid");
+    } else {
+      textualInput.classList.remove("invalid");
+      textualInput.classList.add("valid");
     }
+  }
+  const pwdConfirm = document.querySelector("#pwd-confirm");
+  pwdConfirm.removeEventListener('blur', validateOnblurPwdConfirm);
+  pwdConfirm.removeEventListener('focus', removeValidStyling);
+  pwdConfirm.addEventListener('input', validateOninputPwdConfirm);
+  const pwd = document.querySelector("#pwd");
+  if (!pwdConfirm.checkValidity() || pwd.value !== pwdConfirm.value) {
+    pwdConfirm.classList.add("invalid");
+    pwdConfirm.classList.remove("valid");
+  } else {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.add("valid");
   }
 }
