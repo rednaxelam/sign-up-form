@@ -185,6 +185,7 @@ function validateForm(e) {
 
 function failedSubmitBehaviour() {
   const textualInputFieldsDefault = document.querySelectorAll(".input-textual.default-validate input");
+  let firstFailedInput = undefined;
   for (let i = 0; i < textualInputFieldsDefault.length; i++) {
     const textualInput = textualInputFieldsDefault.item(i);
     textualInput.removeEventListener('blur', validateOnblur);
@@ -193,6 +194,7 @@ function failedSubmitBehaviour() {
     if (!textualInput.checkValidity()) {
       textualInput.classList.add("invalid");
       textualInput.classList.remove("valid");
+      if (firstFailedInput === undefined) firstFailedInput = textualInput;
     } else {
       textualInput.classList.remove("invalid");
       textualInput.classList.add("valid");
@@ -209,5 +211,13 @@ function failedSubmitBehaviour() {
   } else {
     pwdConfirm.classList.remove("invalid");
     pwdConfirm.classList.add("valid");
+  }
+
+  if (firstFailedInput === pwd) {
+    firstFailedInput.parentNode.parentNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+  } else if (firstFailedInput !== undefined) {
+    firstFailedInput.parentNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+  } else {
+    pwdConfirm.parentNode.parentNode.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
   }
 }
