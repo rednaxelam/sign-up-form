@@ -113,7 +113,9 @@ function togglePasswordVisibility() {
 }
 
 function displayPasswordRequirements() {
-  document.querySelector("#password-requirements-container").setAttribute("style", "visibility: visible;");
+  const pwdRequirementsContainer = document.querySelector("#password-requirements-container");
+  pwdRequirementsContainer.setAttribute("style", "visibility: visible;");
+  pwdRequirementsContainer.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
 }
 
 function hidePasswordRequirements() {

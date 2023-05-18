@@ -191,7 +191,7 @@ input.invalid ~ .error-message, .input-pwd:has(input.invalid) ~ .error-message {
 }
 
 #password-requirements-container {
-  top: 4rem;
+  bottom: 4.5rem;
   padding: 0.5ch 1ch;
   width: 32ch;
   position: absolute;
