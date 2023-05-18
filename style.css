@@ -217,6 +217,11 @@ button[type="submit"] {
   border-radius: 5px;
   box-shadow:  2px 2px 5px #a8a7a7;
   margin-bottom: 16px;
+  transition: 200ms;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.1);
 }
 
 .login, .login:active, .login:visited, .login:hover {
