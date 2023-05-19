@@ -30,15 +30,16 @@ main {
 
 header {
   flex: 1 1 300px;
-  min-height: 300px;
+  min-height: 250px;
   background-image: url(./img/background-img.jpg);
   background-size: cover;
   position: relative;
 }
 
 .header-logo {
-  position: absolute;
+  position: sticky;
   top: 22%;
+  margin-bottom: 3rem;
   font-family: odin;
   font-size: 90px;
   color: white;
