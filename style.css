@@ -131,6 +131,7 @@ p {
   border: 2px solid #E5E7EB;
   border-radius: 2px;
   padding: 0.2rem 0.3rem 0.2rem 0.3rem;
+  width: 25ch;
 }
 
 .input-textual input:focus {
@@ -185,6 +186,12 @@ input.invalid ~ .error-message, .input-pwd:has(input.invalid) ~ .error-message {
   margin: 0 0 0 -1.8rem;
   vertical-align: text-top;
   cursor: pointer;
+}
+
+#pwd, #pwd-confirm {
+  box-sizing: border-box;
+  width: calc(25ch + 0.6rem + 4px);
+  padding-right: 2rem;
 }
 
 .input-textual {
