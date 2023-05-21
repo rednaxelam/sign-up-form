@@ -140,7 +140,6 @@ function displaySatisfiedPasswordRequirements() {
 
   const pwdInputValue = document.getElementById("pwd").value;
 
-  //the code below could be simplified with a helper function
   const passwordRequirement8To16 = document.getElementById("pr-8-to-16");
   if (pwdInputValue.length <= 7 || pwdInputValue.length >= 17) {
     requirementNotSatisfiedStyling(passwordRequirement8To16);
@@ -201,16 +200,25 @@ function failedSubmitBehaviour() {
     }
   }
   const pwdConfirm = document.querySelector("#pwd-confirm");
-  pwdConfirm.removeEventListener('blur', validateOnblurPwdConfirm);
-  pwdConfirm.removeEventListener('focus', removeValidStyling);
-  pwdConfirm.addEventListener('input', validateOninputPwdConfirm);
   const pwd = document.querySelector("#pwd");
-  if (!pwdConfirm.checkValidity() || pwd.value !== pwdConfirm.value) {
+  if (pwd.checkValidity() && pwd.value !== pwdConfirm.value) {
     pwdConfirm.classList.add("invalid");
     pwdConfirm.classList.remove("valid");
-  } else {
+    pwdConfirm.removeEventListener('blur', validateOnblurPwdConfirm);
+    pwdConfirm.removeEventListener('focus', removeValidStyling);
+    pwdConfirm.addEventListener('input', validateOninputPwdConfirm);
+  } else if (pwd.checkValidity() && pwd.value === pwdConfirm.value) {
     pwdConfirm.classList.remove("invalid");
     pwdConfirm.classList.add("valid");
+    pwdConfirm.removeEventListener('input', validateOninputPwdConfirm);
+    pwdConfirm.addEventListener('blur', validateOnblurPwdConfirm);
+    pwdConfirm.addEventListener('focus', removeValidStyling);
+  } else {
+    pwdConfirm.classList.remove("invalid");
+    pwdConfirm.classList.remove("valid");
+    pwdConfirm.removeEventListener('input', validateOninputPwdConfirm);
+    pwdConfirm.addEventListener('blur', validateOnblurPwdConfirm);
+    pwdConfirm.addEventListener('focus', removeValidStyling);
   }
 
   if (firstFailedInput === pwd) {
