@@ -238,5 +238,9 @@ button[type="submit"]:hover {
 }
 
 .account-prompt {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.add-margin-top {
+  margin-top: 3rem;
 }
